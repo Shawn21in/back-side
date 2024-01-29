@@ -66,17 +66,35 @@ if($title == ""){
         <div class="card-body">
             <div class="horizontal-form">
                 <form class="form-horizontal" action=<?=$action?> method="post">
-                    <div class="form-group"> <label class="col-sm-2 control-label">管理者帳號：</label>
-                        <div class="col-sm-10"> <input type="text" name="saId" class="form-control" placeholder="管理者帳號" value="<?=$aId?>" <?=$readonly?>></div>
-                    </div>
-                    <div class="form-group"> <label class="col-sm-2 control-label">管理者名稱：</label>
-                        <div class="col-sm-10"> <input type="text" name="saName" class="form-control" placeholder="管理者名稱" value="<?=$aName?>"> </div>
-                    </div>
-                    <div class="form-group"> <label class="col-sm-2 control-label">密碼：</label>
-                        <div class="col-sm-10"> <input type="text" name="saPassword" class="form-control" placeholder="密碼" value="<?=$aPassword?>"> </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">管理者帳號：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="saId" class="form-control" placeholder="管理者帳號" value="<?=$aId?>" <?=$readonly?>>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10"> <button type="submit" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5"><i class="ti-check"></i>確認</button> <a href="admin.php"><button type="button" class="btn btn-default btn-flat btn-addon m-b-10 m-l-5"><i class="ti-close"></i>離開</button></a> </div>
+                        <label class="col-sm-2 control-label">管理者名稱：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="saName" class="form-control" placeholder="管理者名稱" value="<?=$aName?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">密碼：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="saPassword" class="form-control" placeholder="密碼" value="<?=$aPassword?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5">
+                                <i class="ti-check"></i>確認
+                            </button>
+                            <a href="admin.php"> 
+                                <button type="button" class="btn btn-default btn-flat btn-addon m-b-10 m-l-5">
+                                    <i class="ti-close"></i>離開
+                                </button>
+                            </a>
+                        </div>
                     </div>
                     <div class="form-group"> </div>
                 </form>

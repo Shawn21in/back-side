@@ -18,19 +18,28 @@
                     break;
             }
         }
+        $search = isset($_GET['Search']) ? $_GET['Search'] : "";
     ?>			
 <div class="col-lg-12">
     <div class="card alert">
         <div class="card-header">
             <h2>管理者資料管理</h2><Br/>
 				<div class="row">
-					<a href="admindetail.php" ><button type="button" class="col-lg-2 btn btn-primary btn-flat btn-addon m-b-10 m-l-20"><i class="ti-plus"></i>新增管理者 </button></a>
+					<a href="admindetail.php" >
+                        <button type="button" class="col-lg-2 btn btn-primary btn-flat btn-addon m-b-10 m-l-20">
+                            <i class="ti-plus"></i>新增管理者
+                        </button>
+                    </a>
 						<div class="basic-form col-lg-8">
                             <form action="admin.php" method="get">
                                 <div class="form-group">
                                     <div class="input-group input-group-default">
-                                        <input type="text" placeholder="Search Round" name="Search" class="form-control">
-                                        <span class="input-group-btn"><button class="btn btn-primary btn-group-right" type="submit"><i class="ti-search"></i> 查詢</button></span>
+                                        <input type="text" placeholder="Search Round" name="Search" value="<?=$search?>" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary btn-group-right" type="submit">
+                                                <i class="ti-search"></i> 查詢
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </form>
@@ -49,9 +58,14 @@
 
             $search = isset($_GET['Search']) ?$_GET['Search'] : "";
             if($search == ""){
-               $sql = "SELECT admin.aId,admin.aName,admin.aPassword FROM admin"; // 指定SQL查詢字串
+               $sql = "SELECT admin.aId,admin.aName,admin.aPassword 
+               FROM admin"; // 指定SQL查詢字串
             }else{
-               $sql = "SELECT admin.aId,admin.aName,admin.aPassword FROM admin WHERE admin.aId LIKE '%$search%' or admin.aName LIKE '%$search%' or admin.aPassword LIKE '%$search%' "; // 指定SQL查詢字串
+               $sql = "SELECT admin.aId,admin.aName,admin.aPassword 
+               FROM admin WHERE admin.aId 
+               LIKE '%$search%' or admin.aName 
+               LIKE '%$search%' or admin.aPassword 
+               LIKE '%$search%' "; // 指定SQL查詢字串
             }
             //LIKE '%$search%'
             //$sql = "SELECT * FROM admin";
@@ -82,8 +96,16 @@
                     <td><?=$row['aName']?></td>
                     <td><?=$row['aPassword']?></td>                            
                     <td>
-                        <a href="admindetail.php?title=edit&id=<?=$row['aId']?>" ><button type="button" class="btn btn btn-info btn btn-flat btn-addon btn-sm m-b-5 m-l-5"><i class="ti-pencil-alt"></i>修改</button></a>
-                        <a href="#" ><button type="button" class="btn btn btn-default btn btn-flat btn-addon btn-sm m-b-5 m-l-5" onclick="javascript:deleteConfirm('admin.php','<?=$row['aId']?>')"><i class="ti-trash"></i>刪除</button></a>
+                        <a href="admindetail.php?title=edit&id=<?=$row['aId']?>" >
+                            <button type="button" class="btn btn btn-info btn btn-flat btn-addon btn-sm m-b-5 m-l-5">
+                                <i class="ti-pencil-alt"></i>修改
+                            </button>
+                        </a>
+                        <a href="#" >
+                            <button type="button" class="btn btn btn-default btn btn-flat btn-addon btn-sm m-b-5 m-l-5" onclick="javascript:deleteConfirm('admin.php','<?=$row['aId']?>')">
+                            <i class="ti-trash"></i>刪除
+                            </button>
+                        </a>
                     </td>
                 </tr>
             <?php

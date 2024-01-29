@@ -18,25 +18,34 @@
                     break;
             }
         }
+        $search = isset($_GET['Search']) ? $_GET['Search'] : "";
     ?>			
 <div class="col-lg-12">
     <div class="card alert">
         <div class="card-header">
             <h2>會員資料管理</h2><Br/>
 				<div class="row">
-					<a href="memberdetail.php" ><button type="button" class="col-lg-2 btn btn-primary btn-flat btn-addon m-b-10 m-l-20"><i class="ti-plus"></i>新增會員 </button></a>
-						<div class="basic-form col-lg-8">
-                            <form action="member.php" method="get">
-                                <div class="form-group">
-                                    <div class="input-group input-group-default">
-                                        <input type="text" placeholder="Search Round" name="Search" class="form-control">
-                                        <span class="input-group-btn"><button class="btn btn-primary btn-group-right" type="submit"><i class="ti-search"></i> 查詢</button></span>
-                                    </div>
+				<a href="memberdetail.php" >	
+                    <button type="button" class="col-lg-2 btn btn-primary btn-flat btn-addon m-b-10 m-l-20">
+                        <i class="ti-plus"></i>新增會員
+                    </button>
+                </a>
+					<div class="basic-form col-lg-8">
+                        <form action="member.php" method="get">
+                            <div class="form-group">
+                                <div class="input-group input-group-default">
+                                    <input type="text" placeholder="Search Round" name="Search" value="<?=$search?>" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary btn-group-right" type="submit">
+                                            <i class="ti-search"></i> 查詢
+                                        </button>
+                                    </span>
                                 </div>
-                            </form>
-                        </div>
-					</div>
-                </div>
+                            </div>
+                        </form>
+                    </div>
+				</div>
+            </div>
             <?php
             // 建立MySQL的資料庫連接 
             //$page=2;
@@ -93,8 +102,16 @@
                     <td><?=$row['mPassword']?></td>  
                     <td><?=$row['arName']?></td>                            
                     <td>
-                        <a href="memberdetail.php?title=edit&id=<?=$row['mId']?>" ><button type="button" class="btn btn btn-info btn btn-flat btn-addon btn-sm m-b-5 m-l-5"><i class="ti-pencil-alt"></i>修改</button></a>
-                        <a href="#" ><button type="button" class="btn btn btn-default btn btn-flat btn-addon btn-sm m-b-5 m-l-5" onclick="javascript:deleteConfirm('member.php','<?=$row['mId']?>')"><i class="ti-trash"></i>刪除</button></a>
+                        <a href="memberdetail.php?title=edit&id=<?=$row['mId']?>" >
+                            <button type="button" class="btn btn btn-info btn btn-flat btn-addon btn-sm m-b-5 m-l-5">
+                                <i class="ti-pencil-alt"></i>修改
+                            </button>
+                        </a>
+                        <a href="#" >
+                            <button type="button" class="btn btn btn-default btn btn-flat btn-addon btn-sm m-b-5 m-l-5" onclick="javascript:deleteConfirm('member.php','<?=$row['mId']?>')">
+                            <i class="ti-trash"></i>刪除
+                            </button>
+                        </a>
                     </td>
                 </tr>
             <?php
@@ -104,15 +121,15 @@
                 echo"<td colspan=5>\n";
                 if($page>1)
                 {
-                    echo"<a href=\"admin.php?page=".($page-1)."\" style=\"color:#000\">上一頁</a> | \n";
+                    echo"<a href=\"member.php?page=".($page-1)."\" style=\"color:#000\">上一頁</a> | \n";
                 }
                 for($i=1; $i<=$total_page; $i++)
                 {
-                    echo"<a href=\"admin.php?page=".$i."\" style=\"color:#000\">".$i."</a>\n";
+                    echo"<a href=\"member.php?page=".$i."\" style=\"color:#000\">".$i."</a>\n";
                 }
                 if($page<$total_page)
                 {
-                    echo"<a href=\"admin.php?page=".($page+1)."\" style=\"color:#000\">下一頁</a> | \n";
+                    echo"<a href=\"member.php?page=".($page+1)."\" style=\"color:#000\">下一頁</a> | \n";
                 }
                 echo"</td>\n";
                 echo"</tr>";
